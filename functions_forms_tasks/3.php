@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="CP1251">
+    <meta charset="utf-8">
     <title>Form functions</title>
 </head>
 <body>
@@ -16,7 +16,6 @@
 <?php
 	function chop_words($chop_length, $file_name){
 		$text = file_get_contents($file_name);
-		echo $text;
 		$a=explode(' ', $text);
 		$c=0;
 		foreach($a as $w) {
