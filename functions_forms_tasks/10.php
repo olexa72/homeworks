@@ -5,7 +5,7 @@
     <title>Form functions</title>
 </head>
 <body>
-<h3> Unique words count </h3>
+<h3> Count unique words </h3>
 <form method='post'>
     Type some words here: <br>
         <textarea name='text'></textarea><br>
@@ -17,23 +17,26 @@
 </html>
 
 <?php
-    function uniq($str)
+    function count_uniq_words($str)
     {
         $arr = explode(' ',$str);
-        $unq = 0;
-        foreach ($arr as $item1) {
+        $uniq_words = array();
+		$num=0;
+        foreach ($arr as $word1) {
             $same = 0;
-            foreach ($arr as $item2) {
-                if ($item1 == $item2) $same++;
-                if ($same > 1) break;
+            foreach ($uniq_words as $word2) {
+                if ($word1 == $word2) $same++;
+                if ($same > 0) break;
             }
-            if ($same == 1) $unq++;
+            if ($same == 0) {
+				$uniq_words[]=$word1;
+				$num++;
+			}
         }
-
-		return $unq;
+		return $num;
 	}
 	
 	$str = $_POST['text'];
-	$uniq_words = uniq($str);
-	echo $uniq_words;
+	$num = count_uniq_words($str);
+	echo "uniq: $num";
 ?>

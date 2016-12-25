@@ -6,7 +6,7 @@
 </head>
 <body>
 <h3> Chop long words in 'test.txt' file </h3>
-<form method='post'>
+<form method='post' action='3.php'>
     The longest word should be: <input type="text" name="chop"> characters long.<br>
         <input type='submit' value="Chop words">
 </form>
@@ -23,13 +23,10 @@
 			$c++;
 		}
 		$text=implode(' ', $a);
-		$handle=fopen($file_name, 'wb');
-		fwrite($handle, $text);
-		fclose($handle);
+		file_put_contents($file_name, $text);
 	}
 	
-	$l=$_POST['chop'];
-	
-	chop_words($l, 'test.txt');
+	if(isset($_POST['chop'])
+		chop_words($_POST['chop'], 'test.txt');
 ?>
 		

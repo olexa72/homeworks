@@ -1,8 +1,8 @@
 <?php
 $filename = "db.txt";
 if(isset($_POST['send'])) {
-    $username = $_POST['username'];
-    $msg = $_POST['msg'];
+    $username = trim($_POST['username']);
+    $msg = trim($_POST['msg']);
 
     $data = array('username' => $username, 'msg' => $msg, 'date' => date('Y-m-d H:i:s'));
 
@@ -16,7 +16,7 @@ if(isset($_POST['send'])) {
 <body>
     <?php
         $file=file_get_contents($filename);
-        $items=explode("\r\n", trim($file, "\r\n"));
+        $items=explode("\r\n", $file);
         echo "<table cellpadding=\"5\" border=\"1\">";
         foreach($items as $key=>$item){
             $item = unserialize($item);
@@ -28,7 +28,7 @@ if(isset($_POST['send'])) {
         echo '</table>';
     ?>
     <h2> Write a comment.</h2>
-    <form action="form.php" method="post">
+    <form method="post" action='7.php'>
         Username: <br> <input type="text" name="username"><br>
         <br>
         Message: <br> <textarea name="msg"></textarea><br><br>

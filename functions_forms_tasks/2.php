@@ -6,7 +6,7 @@
 </head>
 <body>
 <h3> Three longest words </h3>
-<form method='post'>
+<form method='post' action='2.php'>
     Type some words here: <br>
         <textarea name='text'></textarea><br>
         <input type='submit' value="Find 3 longest words">
@@ -35,10 +35,10 @@
 		} else return $top;
 	}
 
-    $text = $_POST['text'];
-
-    $top = top3($text);
-    echo '<p>Three longest words: ';
-    foreach($top as $item) echo " $item";
-	echo '.</p>';
+	if(isset($_POST['text'])) {
+		$top = top3($_POST['text']);
+		echo '<p>Three longest words: ';
+		foreach($top as $item) echo " $item";
+		echo '.</p>';
+	}
 ?>

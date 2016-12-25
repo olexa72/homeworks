@@ -6,33 +6,26 @@
 </head>
 <body>
 
-<h3> Count different words </h3>
+<h3> Reverse sentences in a text </h3>
 
 </body>
 </html>
 
 <?php
-    function diff_words_count($str)
+    function reverse_sentences($str)
     {
         $arr = explode('.',$str);
-        $words = array();
-        foreach ($arr as $a) {
-            foreach($words as $w)
-                if($w == $a) $br = true;
-            if(!$br) {
-                $c = 0;
-                foreach ($arr as $b)
-                    if ($a == $b) $c++;
-                $words[$a] = $c;
-            }
-        }
+        $num = count($arr);
+        $rev = '';
+		for($i=num-1; $i>=0; $i--) {
+			$rev .=  trim($arr[$i]) . '. ';
 
-		return $words;
+		return $rev;
 	}
 	
-	$str = 'apple cherry strawberry strawberry cherry pear apple cherry strawberry apple strawberry strawberry cherry pear apple cherry cherry strawberry apple strawberry strawberry cherry strawberry cherry pear apple cherry cherry strawberry apple strawberry strawberry cherry cherry pear apple cherry strawberry';
+	$str = "Experimental Breeder Reactor I (EBR-I) is a decommissioned research reactor and U.S. National Historic Landmark located in the desert about 18 miles (29 km) southeast of Arco, Idaho. At 1:50 pm on December 20, 1951, it became the world's first electricity-generating nuclear power plant when it produced sufficient electricity to illuminate four 200-watt light bulbs. It subsequently generated sufficient electricity to power its building, and continued to be used for experimental purposes until it was decommissioned in 1964.";
     echo "$str <br><br>";
-    $text = diff_words_count($str);
-	echo "There are such words in the string: <br><br>";
+    $text = reverse_sentences($str);
+	echo "Here is the reversed text: <br><br>";
 	echo $text;
 ?>

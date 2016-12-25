@@ -1,11 +1,10 @@
-
-
 <?php
 $filename = "db.txt";
 if(isset($_POST['send'])) {
     $username = trim($_POST['username']);
     $msg = trim($_POST['msg'], "\r\n");
 	$msg = strip_tags($msg, '<b>');
+	
 	$forbid = array("fuck", "bastard", "shit", "dick", "cock", "sucker");
 	foreach($forbid as $badWord) {
 		if(strpos($msg, $badWord) !== FALSE) {
