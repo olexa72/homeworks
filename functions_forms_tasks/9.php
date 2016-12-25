@@ -6,7 +6,7 @@
 </head>
 <body>
 <h3> String inversion </h3>
-<form method='post'>
+<form method='post' action='9.php'>
     Type some words here: <br>
         <textarea name='text'></textarea><br>
         <input type='submit' value="Inverse">
@@ -26,7 +26,8 @@
 		return $rev;
 	}
 	
-	$str = $_POST['text'];
-	$rev = str_rev($str);
-	echo $rev;
+	if(isset($_POST['text'])) {
+		$rev = str_rev($_POST['text']);
+		echo "$rev <br>";
+	}
 ?>

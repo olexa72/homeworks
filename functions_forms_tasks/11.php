@@ -33,7 +33,6 @@
 		return $text;
 	}
 	
-	$str = $_POST['text'];
-	$text = capitalize($str);
-	echo "$text <br>";
+	if(isset($_POST['text'])) 
+		echo "capitalize($_POST['text']) <br>";
 ?>
