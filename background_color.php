@@ -5,7 +5,7 @@
 	$cookie = 'color';
 	if(!isset($_COOKIES[$cookie])) {
 		echo setcookie($cookie, $color);//, time()+300);
-		echo $_COOKIES[$cookie], '<br>';
+		echo $_COOKIES[$cookie], '<br>'; //Here cookie is set, echo shows '1'
 	}
 ?>
 
@@ -32,6 +32,6 @@
 					else echo ' '; ?> 
 			>
 	</form>
-	<?php echo $_COOKIES[$cookie], '<br>'; ?>
+	<?php echo $_COOKIES[$cookie], '<br>'; ?> <!-- And here cookie is unset, echo shows nothing. Why is it so? -->
 </body>
 </html>
