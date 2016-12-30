@@ -1,20 +1,17 @@
 <?php
-	if(isset($_GET['color']))
+	$color = white;
+	if(!isset($_COOKIE[$cookie]) && isset($_GET['color'])) {
 		$color = $_GET['color'];
-	else $color='white';
-	$cookie = 'color';
-	if(!isset($_COOKIES[$cookie])) {
-		echo setcookie($cookie, $color);//, time()+300);
-		echo $_COOKIES[$cookie], '<br>'; //Here cookie is set, echo shows '1'
+		setcookie('color', $color, time()+300);
 	}
 ?>
 
 <!DOCTYPE html>
 <head>
 	<title> Background color </title>
-	<!-- <META HTTP-EQUIV="refresh" CONTENT="250"> -->
+	 <META HTTP-EQUIV="refresh" CONTENT="300">
 	<style>
-		*{ background-color: <?php echo $color ?> }
+		*{ background-color: <?php echo $color; ?> }
 	</style>
 </head>
 <body>
@@ -28,10 +25,8 @@
 			<option value="green">
 		</datalist>
 		<input type="submit" value="Set color" 
-			<?php if(isset($_COOKIES[$cookie])) echo 'disabled';
-					else echo ' '; ?> 
+			<?php if(isset($_COOKIE['color'])) echo 'disabled'; else echo ' '; ?> 
 			>
 	</form>
-	<?php echo $_COOKIES[$cookie], '<br>'; ?> <!-- And here cookie is unset, echo shows nothing. Why is it so? -->
 </body>
 </html>
